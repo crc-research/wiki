@@ -62,8 +62,9 @@ services:
     volumes:
       - ./extensions:/var/www/mediawiki/w/user-extensions
       - ./skins:/var/www/mediawiki/w/user-skins
-      - ./config:/mediawiki/config
-      - ./images:/mediawiki/images
+      - ./config:/mediawiki/config:ro
+      - mediawiki-images:/mediawiki/images
+      - mediawiki-config:/mediawiki/config-generated
       - sitemap:/mediawiki/sitemap
       - ./setup-mediawiki.sh:/setup-mediawiki.sh:ro
     entrypoint: ["/setup-mediawiki.sh"]
@@ -100,3 +101,5 @@ volumes:
   mysql-data-volume:
   elasticsearch:
   sitemap:
+  mediawiki-images:
+  mediawiki-config:

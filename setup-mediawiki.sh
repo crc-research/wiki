@@ -37,7 +37,7 @@ MW_SITE_SERVER=${MW_SITE_SERVER:-"https://localhost"}
 
 # MediaWiki paths
 MW_PATH="/var/www/mediawiki/w"
-MW_CONFIG_PATH="/mediawiki/config"
+MW_CONFIG_PATH="/mediawiki/config-generated"
 LOCALSETTINGS_PATH="${MW_CONFIG_PATH}/LocalSettings.php"
 
 log "Starting Canasta MediaWiki setup..."
@@ -138,9 +138,9 @@ wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'Timeless' );
 wfLoadSkin( 'MinervaNeue' );
 
-# Include any custom settings
-if ( file_exists( __DIR__ . '/SettingsTemplate.php' ) ) {
-    include_once __DIR__ . '/SettingsTemplate.php';
+# Include any custom settings from read-only config
+if ( file_exists( '/mediawiki/config/SettingsTemplate.php' ) ) {
+    include_once '/mediawiki/config/SettingsTemplate.php';
 }
 EOF
 
