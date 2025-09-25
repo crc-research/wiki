@@ -87,7 +87,7 @@ services:
     image: docker.io/library/varnish:7.0.2-alpine
     restart: unless-stopped
     ports:
-      - "${HTTP_PORT:-80}:80"
+      - "80"
     depends_on:
       web:
         condition: service_started
