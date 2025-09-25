@@ -63,8 +63,8 @@ services:
       - ./extensions:/var/www/mediawiki/w/user-extensions
       - ./skins:/var/www/mediawiki/w/user-skins
       - ./config:/mediawiki/config:ro
+      - ./config/LocalSettings.php:/var/www/mediawiki/w/LocalSettings.php:ro
       - mediawiki-images:/mediawiki/images
-      - mediawiki-config:/mediawiki/config-generated
       - sitemap:/mediawiki/sitemap
       - ./setup-mediawiki.sh:/setup-mediawiki.sh:ro
     entrypoint: ["/setup-mediawiki.sh"]
@@ -102,4 +102,3 @@ volumes:
   elasticsearch:
   sitemap:
   mediawiki-images:
-  mediawiki-config:

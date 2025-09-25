@@ -5,3 +5,4 @@
 !composer.local.json
 !default.vcl
 !SettingsTemplate.php
+!LocalSettings.php
