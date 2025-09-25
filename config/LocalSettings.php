@@ -68,7 +68,7 @@ wfLoadSkin( 'Vector' );
 wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'Timeless' );
 wfLoadSkin( 'MinervaNeue' );
-$wgDefaultSkin = "vector";
+$wgDefaultSkin = "timeless";
 
 ## Performance and caching
 $wgCacheDirectory = "/tmp";
