@@ -57,8 +57,8 @@ $wgLanguageCode = getenv('MW_WIKI_LANG') ?: "en";
 
 ## File uploads
 $wgEnableUploads = true;
-$wgUploadDirectory = "/mediawiki/images";
-$wgUploadPath = "/images";
+$wgUploadDirectory = "/var/www/mediawiki/w/images";
+$wgUploadPath = "/w/images";
 $wgFileExtensions = array_merge( $wgFileExtensions, [
 	'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'
 ]);

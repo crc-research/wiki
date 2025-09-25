@@ -30,11 +30,6 @@ sub vcl_recv {
         set req.url = "/w/index.php/Main_Page";
     }
 
-    # Rewrite /images/ to /w/images/ so MediaWiki can serve them
-    if (req.url ~ "^/images/") {
-        set req.url = regsub(req.url, "^/images/", "/w/images/");
-    }
-
     # Handle nice URLs - rewrite /Article_Name to /w/index.php/Article_Name
     # BUT avoid rewriting actual MediaWiki paths and static resources
     if (req.url !~ "^/w/" && req.url !~ "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$" && req.url != "/") {
@@ -56,8 +51,8 @@ sub vcl_recv {
         return (pass);
     }
 
-    # Pass images - both /images/ and /w/images/ paths
-    if (req.url ~ "^/images/" || req.url ~ "^/w/images/") {
+    # Pass images
+    if (req.url ~ "^/w/images/") {
         return(pass);
     }
 

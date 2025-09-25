@@ -71,13 +71,10 @@ fi
 
 log "Setting up images directory security..."
 
-# Enable Apache images configuration
-log "Enabling Apache images configuration..."
-a2enconf images || log "Apache images config already enabled or failed to enable"
 
 # Ensure the images directory has proper security files
 log "Creating security .htaccess for images directory..."
-cat > "/mediawiki/images/.htaccess" << 'EOF'
+cat > "/var/www/mediawiki/w/images/.htaccess" << 'EOF'
 # Allow access to image files
 Require all granted
 

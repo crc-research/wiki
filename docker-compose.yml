@@ -64,8 +64,7 @@ services:
       - ./skins:/var/www/mediawiki/w/user-skins
       - ./config:/mediawiki/config:ro
       - ./config/LocalSettings.php:/var/www/mediawiki/w/LocalSettings.php:ro
-      - ./config/apache-images.conf:/etc/apache2/conf-available/images.conf:ro
-      - mediawiki-images:/mediawiki/images
+      - mediawiki-images:/var/www/mediawiki/w/images
       - sitemap:/mediawiki/sitemap
       - ./setup-mediawiki.sh:/setup-mediawiki.sh:ro
     entrypoint: ["/setup-mediawiki.sh"]
