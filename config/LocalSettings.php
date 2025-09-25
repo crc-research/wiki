@@ -34,10 +34,19 @@ $wgUsePathInfo = true;
 $wgSecretKey = getenv('MW_SECRET_KEY') ?: bin2hex(random_bytes(32));
 $wgUpgradeKey = getenv('MW_UPGRADE_KEY') ?: bin2hex(random_bytes(16));
 
-// # Prevent anonymous users from editing
-// $wgGroupPermissions['*']['edit'] = false;
-// $wgGroupPermissions['*']['createpage'] = false;
-// $wgGroupPermissions['*']['createtalk'] = false;
+// # Require user registration for editing
+$wgGroupPermissions['*']['edit'] = false;
+$wgGroupPermissions['*']['createpage'] = false;
+$wgGroupPermissions['*']['createtalk'] = false;
+$wgGroupPermissions['*']['writeapi'] = false;
+
+# Allow registered users to edit
+$wgGroupPermissions['user']['edit'] = true;
+$wgGroupPermissions['user']['createpage'] = true;
+$wgGroupPermissions['user']['createtalk'] = true;
+
+# Allow anonymous users to create accounts
+$wgGroupPermissions['*']['createaccount'] = true;
 
 ## Administrator
 $wgEmergencyContact = getenv('MW_EMERGENCY_CONTACT') ?: "admin@example.com";
@@ -67,8 +76,21 @@ $wgMainCacheType = CACHE_NONE;
 $wgMemCachedServers = [];
 
 ## Extensions
-# Add your extensions here
-# wfLoadExtension( 'ExtensionName' );
+# Essential extensions for user experience
+wfLoadExtension( 'VisualEditor' );
+wfLoadExtension( 'WikiEditor' );
+wfLoadExtension( 'Echo' );
+
+# Community features
+wfLoadExtension( 'CommentStreams' );
+wfLoadExtension( 'SocialProfile' );
+
+# Security extensions
+wfLoadExtension( 'AbuseFilter' );
+
+# Nice to have
+wfLoadExtension( 'NewUserMessage' );
+wfLoadExtension( 'InputBox' );
 
 ## Memory and execution limits
 ini_set( 'memory_limit', '512M' );
