@@ -70,9 +70,9 @@ ini_set( 'memory_limit', '512M' );
 $wgMaxShellMemory = 512000;
 
 ## Logo (uncomment and set path to your logo)
-# $wgLogos = [
-#     '1x' => "$wgResourceBasePath/resources/assets/wiki.png",
-# ];
+$wgLogos = [
+    '1x' => "https://avatars.githubusercontent.com/u/231865659?s=400&u=101558e545efaaae5b759a823087127ee6b87f41&v=4",
+];
 
 ## Include custom settings template
 $customSettingsFile = __DIR__ . '/SettingsTemplate.php';
