@@ -34,6 +34,11 @@ $wgUsePathInfo = true;
 $wgSecretKey = getenv('MW_SECRET_KEY') ?: bin2hex(random_bytes(32));
 $wgUpgradeKey = getenv('MW_UPGRADE_KEY') ?: bin2hex(random_bytes(16));
 
+// # Prevent anonymous users from editing
+// $wgGroupPermissions['*']['edit'] = false;
+// $wgGroupPermissions['*']['createpage'] = false;
+// $wgGroupPermissions['*']['createtalk'] = false;
+
 ## Administrator
 $wgEmergencyContact = getenv('MW_EMERGENCY_CONTACT') ?: "admin@example.com";
 $wgPasswordSender = getenv('MW_PASSWORD_SENDER') ?: "admin@example.com";
