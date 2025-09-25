@@ -52,7 +52,7 @@ sub vcl_recv {
     }
 
     # Pass images
-    if (req.url ~ "/w/images/") {
+    if (req.url ~ "^/images/") {
         return(pass);
     }
 
