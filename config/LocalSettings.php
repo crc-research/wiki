@@ -79,17 +79,8 @@ $wgMemCachedServers = [];
 # Essential extensions for user experience
 wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'WikiEditor' );
-wfLoadExtension( 'Echo' );
 
-# Community features
-wfLoadExtension( 'CommentStreams' );
-wfLoadExtension( 'SocialProfile' );
-
-# Security extensions
-wfLoadExtension( 'AbuseFilter' );
-
-# Nice to have
-wfLoadExtension( 'NewUserMessage' );
+# Basic community features that should be available
 wfLoadExtension( 'InputBox' );
 
 ## Memory and execution limits
