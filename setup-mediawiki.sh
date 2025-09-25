@@ -54,7 +54,22 @@ if [ ! -f "$MW_PATH/LocalSettings.php" ]; then
     exit 1
 fi
 
-log "LocalSettings.php found. Setting up images directory security..."
+log "LocalSettings.php found. Downloading extensions..."
+
+# Download CreatePageUw extension if not already present
+if [ ! -d "/var/www/mediawiki/w/user-extensions/CreatePageUw" ]; then
+    log "Downloading CreatePageUw extension..."
+    cd /tmp
+    wget -q https://github.com/wikimedia/mediawiki-extensions-CreatePageUw/archive/refs/heads/master.zip -O createpageuw.zip
+    unzip -q createpageuw.zip
+    mv mediawiki-extensions-CreatePageUw-master /var/www/mediawiki/w/user-extensions/CreatePageUw
+    rm createpageuw.zip
+    log "CreatePageUw extension installed!"
+else
+    log "CreatePageUw extension already exists"
+fi
+
+log "Setting up images directory security..."
 
 # Ensure the images directory has proper security files
 if [ ! -f "/mediawiki/images/.htaccess" ]; then

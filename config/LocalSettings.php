@@ -82,7 +82,10 @@ wfLoadExtension( 'WikiEditor' );
 
 # Basic community features that should be available
 wfLoadExtension( 'InputBox' );
-wfLoadExtension( 'CreateRedirect' );
+wfLoadExtension( 'CreatePageUw' );
+
+# Configure CreatePageUw to use VisualEditor
+$wgCreatePageUwUseVE = true;
 
 ## Custom sidebar - modify the default sidebar
 $wgHooks['SkinBuildSidebar'][] = function( $skin, &$sidebar ) {
