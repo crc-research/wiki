@@ -72,9 +72,11 @@ fi
 log "Setting up images directory security..."
 
 # Ensure the images directory has proper security files
-if [ ! -f "/mediawiki/images/.htaccess" ]; then
-    log "Creating security .htaccess for images directory..."
-    cat > "/mediawiki/images/.htaccess" << 'EOF'
+log "Creating security .htaccess for images directory..."
+cat > "/mediawiki/images/.htaccess" << 'EOF'
+# Allow access to image files
+Require all granted
+
 <IfModule headers_module>
 Header set X-Content-Type-Options nosniff
 </IfModule>
@@ -86,7 +88,6 @@ php_flag engine off
 php_flag engine off
 </IfModule>
 EOF
-fi
 
 log "Checking database..."
 
