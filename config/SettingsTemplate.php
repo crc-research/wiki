@@ -3,6 +3,8 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
 }
-#$wgServer = "https://localhost";
-#$wgSitename = ;
-#$wgMetaNamespace = ;
+
+# Enable nice URLs (remove index.php from URLs)
+$wgScriptPath = "/w";
+$wgArticlePath = "/$1";
+$wgUsePathInfo = true;

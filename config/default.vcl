@@ -15,7 +15,7 @@ acl purge {
     "web";
 }
 
-# vcl_recv is called whenever a request is received 
+# vcl_recv is called whenever a request is received
 sub vcl_recv {
     # Serve objects up to 2 minutes past their expiry if the backend
     # is slow to respond.
@@ -24,6 +24,17 @@ sub vcl_recv {
     set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + client.ip;
 
     set req.backend_hint= default;
+
+    # Handle root requests - redirect to Main_Page
+    if (req.url == "/") {
+        set req.url = "/w/index.php/Main_Page";
+    }
+
+    # Handle nice URLs - rewrite /Article_Name to /w/index.php/Article_Name
+    # BUT avoid rewriting actual MediaWiki paths and static resources
+    if (req.url !~ "^/w/" && req.url !~ "^/images/" && req.url !~ "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$" && req.url != "/") {
+        set req.url = "/w/index.php" + req.url;
+    }
 
     # This uses the ACL action called "purge". Basically if a request to
     # PURGE the cache comes from anywhere other than localhost, ignore it.
