@@ -69,9 +69,11 @@ $wgMemCachedServers = [];
 ini_set( 'memory_limit', '512M' );
 $wgMaxShellMemory = 512000;
 
-## Logo (uncomment and set path to your logo)
+## Logo configuration
 $wgLogos = [
-    '1x' => "https://avatars.githubusercontent.com/u/231865659?s=400&u=101558e545efaaae5b759a823087127ee6b87f41&v=4",
+    'icon' => "https://avatars.githubusercontent.com/u/231865659?s=50&u=101558e545efaaae5b759a823087127ee6b87f41&v=4", // 50x50 for Vector 2022
+    '1x' => "https://avatars.githubusercontent.com/u/231865659?s=135&u=101558e545efaaae5b759a823087127ee6b87f41&v=4",   // 135x135 for legacy skins
+    '2x' => "https://avatars.githubusercontent.com/u/231865659?s=270&u=101558e545efaaae5b759a823087127ee6b87f41&v=4"    // 270x270 high-res
 ];
 
 ## Include custom settings template
