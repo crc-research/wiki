@@ -82,6 +82,17 @@ wfLoadExtension( 'WikiEditor' );
 
 # Basic community features that should be available
 wfLoadExtension( 'InputBox' );
+wfLoadExtension( 'CreateRedirect' );
+
+## Custom sidebar - modify the default sidebar
+$wgHooks['SkinBuildSidebar'][] = function( $skin, &$sidebar ) {
+    $sidebar['navigation']['Create new page'] = [
+        'text' => 'Create new page',
+        'href' => $skin->makeSpecialUrl( 'CreatePage' ),
+        'id' => 'n-createpage',
+        'active' => false
+    ];
+};
 
 ## Memory and execution limits
 ini_set( 'memory_limit', '512M' );
