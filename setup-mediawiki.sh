@@ -54,7 +54,26 @@ if [ ! -f "$MW_PATH/LocalSettings.php" ]; then
     exit 1
 fi
 
-log "LocalSettings.php found. Checking database..."
+log "LocalSettings.php found. Setting up images directory security..."
+
+# Ensure the images directory has proper security files
+if [ ! -f "/mediawiki/images/.htaccess" ]; then
+    log "Creating security .htaccess for images directory..."
+    cat > "/mediawiki/images/.htaccess" << 'EOF'
+<IfModule headers_module>
+Header set X-Content-Type-Options nosniff
+</IfModule>
+<IfModule php7_module>
+php_flag engine off
+</IfModule>
+# In php8, php dropped the version number.
+<IfModule php_module>
+php_flag engine off
+</IfModule>
+EOF
+fi
+
+log "Checking database..."
 
 # Check if database has MediaWiki tables
 TABLE_COUNT=$(mysql -h"$MW_DB_HOST" -u"$MW_DB_USER" -p"$MW_DB_PASS" -D"$MW_DB_NAME" -e "SHOW TABLES LIKE 'user';" 2>/dev/null | wc -l)
