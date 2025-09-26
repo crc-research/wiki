@@ -76,6 +76,7 @@ $wgMainCacheType = CACHE_NONE;
 $wgMemCachedServers = [];
 
 ## Extensions
+wfLoadExtension( 'CodeMirror' );
 wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'VEForAll' );
 wfLoadExtension( 'WikiEditor' );
@@ -90,11 +91,12 @@ wfLoadExtension( 'ParserFunctions' );   // template logic
 wfLoadExtension( 'TemplateStyles' );    // scoped css in templates
 wfLoadExtension( 'TemplateData' );
 wfLoadExtension( 'Scribunto' );
+wfLoadExtension( 'Elastica' );
+wfLoadExtension( 'CirrusSearch' );
 
 ## wikitext source mode inside VE toolbar
 $wgVisualEditorEnableWikitext = true;    
 $wgDefaultUserOptions['visualeditor-newwikitext'] = 1;
-wfLoadExtension( 'CodeMirror' );
 
 # Configure CreatePageUw to use VisualEditor
 $wgCreatePageUwUseVE = true;
