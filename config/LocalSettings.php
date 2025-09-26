@@ -76,13 +76,16 @@ $wgMainCacheType = CACHE_NONE;
 $wgMemCachedServers = [];
 
 ## Extensions
-# Essential extensions for user experience
 wfLoadExtension( 'VisualEditor' );
+wfLoadExtension( 'VEForAll' );
 wfLoadExtension( 'WikiEditor' );
-
-# Basic community features that should be available
 wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'CreatePageUw' );
+wfLoadExtension( 'Gadgets' );
+wfLoadExtension( 'Math' );
+wfLoadExtension( 'AdminLinks' );
+wfLoadExtension( 'SimpleChanges' );
+wfLoadExtension( 'CommentStreams' );
 
 # Configure CreatePageUw to use VisualEditor
 $wgCreatePageUwUseVE = true;
