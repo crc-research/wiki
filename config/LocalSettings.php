@@ -93,6 +93,7 @@ wfLoadExtension( 'TemplateData' );
 wfLoadExtension( 'Scribunto' );
 wfLoadExtension( 'Elastica' );
 wfLoadExtension( 'CirrusSearch' );
+wfLoadExtension( 'SlashCommands' );
 
 ## wikitext source mode inside VE toolbar
 $wgVisualEditorEnableWikitext = true;    

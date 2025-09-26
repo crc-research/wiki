@@ -54,6 +54,7 @@ if [ ! -f "$MW_PATH/LocalSettings.php" ]; then
     exit 1
 fi
 
+# TODO: better do this while building a separate image for extensions
 log "LocalSettings.php found. Downloading extensions..."
 
 # Download CreatePageUw extension if not already present
@@ -67,6 +68,18 @@ if [ ! -d "/var/www/mediawiki/w/user-extensions/CreatePageUw" ]; then
     log "CreatePageUw extension installed!"
 else
     log "CreatePageUw extension already exists"
+fi
+
+if [ ! -d "/var/www/mediawiki/w/user-extensions/SlashCommands" ]; then
+    log "Downloading SlashCommands extension (version 1.2.0)..."
+    cd /tmp
+    wget -q https://github.com/ProfessionalWiki/SlashCommands/archive/d62aaa95b9461e2757a9a5d2e9ca16e093f95fea.zip -O slashcommands.zip
+    unzip -q slashcommands.zip
+    mv SlashCommands-d62aaa95b9461e2757a9a5d2e9ca16e093f95fea /var/www/mediawiki/w/user-extensions/SlashCommands
+    rm slashcommands.zip
+    log "SlashCommands extension installed!"
+else
+    log "SlashCommands extension already exists"
 fi
 
 log "Setting up images directory security..."
