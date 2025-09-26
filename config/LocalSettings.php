@@ -114,7 +114,11 @@ ini_set( 'memory_limit', '512M' );
 $wgMaxShellMemory = 512000;
 
 ## Logo configuration
-$wgLogo = "https://crc.artyom.me/w/images/c/c9/Logo.png";
+$wgLogos = [
+	'icon' => "https://crc.artyom.me/w/images/c/c9/Logo.png",
+	'1x' => "https://crc.artyom.me/w/images/c/c9/Logo.png",
+	'2x' => "https://crc.artyom.me/w/images/c/c9/Logo.png",
+];
 
 ## Include custom settings template
 $customSettingsFile = __DIR__ . '/SettingsTemplate.php';
