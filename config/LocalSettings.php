@@ -86,6 +86,15 @@ wfLoadExtension( 'Math' );
 wfLoadExtension( 'AdminLinks' );
 wfLoadExtension( 'SimpleChanges' );
 wfLoadExtension( 'CommentStreams' );
+wfLoadExtension( 'ParserFunctions' );   // template logic
+wfLoadExtension( 'TemplateStyles' );    // scoped css in templates
+wfLoadExtension( 'TemplateData' );
+wfLoadExtension( 'Scribunto' );
+
+## wikitext source mode inside VE toolbar
+$wgVisualEditorEnableWikitext = true;    
+$wgDefaultUserOptions['visualeditor-newwikitext'] = 1;
+wfLoadExtension( 'CodeMirror' );
 
 # Configure CreatePageUw to use VisualEditor
 $wgCreatePageUwUseVE = true;
@@ -105,11 +114,7 @@ ini_set( 'memory_limit', '512M' );
 $wgMaxShellMemory = 512000;
 
 ## Logo configuration
-$wgLogos = [
-    'icon' => "https://avatars.githubusercontent.com/u/231865659?s=50&u=101558e545efaaae5b759a823087127ee6b87f41&v=4", // 50x50 for Vector 2022
-    '1x' => "https://avatars.githubusercontent.com/u/231865659?s=135&u=101558e545efaaae5b759a823087127ee6b87f41&v=4",   // 135x135 for legacy skins
-    '2x' => "https://avatars.githubusercontent.com/u/231865659?s=270&u=101558e545efaaae5b759a823087127ee6b87f41&v=4"    // 270x270 high-res
-];
+$wgLogo = "$wgScriptPath/images/c/c9/Logo.png";
 
 ## Include custom settings template
 $customSettingsFile = __DIR__ . '/SettingsTemplate.php';
