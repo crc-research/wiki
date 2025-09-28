@@ -33,7 +33,10 @@ RUN cd /tmp && \
     rm slashcommands.zip
 
 # Copy custom maintenance scripts so Canasta runs them automatically
-COPY scripts/*.sh _sources/scripts/maintenance-scripts/
+COPY scripts/*.sh /maintenance-scripts/
+RUN chmod +x /maintenance-scripts/*.sh
+# Canasta has a few scripts as well but they are broken, e.g. https://github.com/CanastaWiki/Canasta/blob/master/smw-maintenance.sh
+# isn't even valid bash ("sac"). We only need the cirrus search setup and we can do it by ourselves.
 
 # Copy entrypoint.sh (which will do stuff and then run Canasta's entrypoint /run-all.sh)
 COPY entrypoint.sh /
