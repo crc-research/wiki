@@ -34,8 +34,6 @@ wfLoadExtension( 'CommentStreams' );
 wfLoadExtension( 'ParserFunctions' );   // template logic
 wfLoadExtension( 'TemplateStyles' );    // scoped css in templates
 wfLoadExtension( 'TemplateData' );
-wfLoadExtension( 'Elastica' );
-wfLoadExtension( 'CirrusSearch' );
 wfLoadExtension( 'SlashCommands' );
 
 ## wikitext source mode inside VE toolbar
@@ -49,6 +47,13 @@ $wgCreatePageUwUseVE = true;
 ## Add Scribunto and configure it to use LuaSandbox
 wfLoadExtension( 'Scribunto' );
 $wgScribuntoDefaultEngine = 'luasandbox';
+
+## Configure search
+wfLoadExtension( 'Elastica' );
+wfLoadExtension( 'CirrusSearch' );
+wfLoadExtension( 'AdvancedSearch' );
+$wgSearchType = 'CirrusSearch';
+$wgCirrusSearchServers = [ 'elasticsearch' ];
 
 ## Custom sidebar - modify the default sidebar
 $wgHooks['SkinBuildSidebar'][] = function( $skin, &$sidebar ) {
