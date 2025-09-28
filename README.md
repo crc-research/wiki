@@ -87,7 +87,6 @@ URLs are rewritten by Varnish to the MediaWiki backend.
 
 1. Update the image version in `docker-compose.yml`
 2. Restart containers: `docker compose up -d`
-3. Database migrations run automatically via `MW_UPGRADE=true`
 4. Your `LocalSettings.php` stays the same (manually managed)
 
 ## Troubleshooting
