@@ -26,7 +26,6 @@ wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'VEForAll' );
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'InputBox' );
-wfLoadExtension( 'CreatePageUw' );
 wfLoadExtension( 'Gadgets' );
 wfLoadExtension( 'Math' );
 wfLoadExtension( 'AdminLinks' );
@@ -35,7 +34,6 @@ wfLoadExtension( 'CommentStreams' );
 wfLoadExtension( 'ParserFunctions' );   // template logic
 wfLoadExtension( 'TemplateStyles' );    // scoped css in templates
 wfLoadExtension( 'TemplateData' );
-wfLoadExtension( 'Scribunto' );
 wfLoadExtension( 'Elastica' );
 wfLoadExtension( 'CirrusSearch' );
 wfLoadExtension( 'SlashCommands' );
@@ -44,8 +42,13 @@ wfLoadExtension( 'SlashCommands' );
 $wgVisualEditorEnableWikitext = true;    
 $wgDefaultUserOptions['visualeditor-newwikitext'] = 1;
 
-## Configure CreatePageUw to use VisualEditor
+## Add CreatePageUw and configure it to use VisualEditor
+wfLoadExtension( 'CreatePageUw' );
 $wgCreatePageUwUseVE = true;
+
+## Add Scribunto and configure it to use LuaSandbox
+wfLoadExtension( 'Scribunto' );
+$wgScribuntoDefaultEngine = 'luasandbox';
 
 ## Custom sidebar - modify the default sidebar
 $wgHooks['SkinBuildSidebar'][] = function( $skin, &$sidebar ) {

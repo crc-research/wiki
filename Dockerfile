@@ -1,12 +1,24 @@
 FROM ghcr.io/canastawiki/canasta:3.0.3
 
-RUN apt-get install -y unzip
+# Update the package index
+RUN apt-get update && apt-get install -y ca-certificates curl gnupg \
+ && install -m 0755 -d /etc/apt/keyrings \
+ && curl -fsSL https://packages.sury.org/php/apt.gpg -o /etc/apt/keyrings/sury.gpg \
+ && echo "deb [signed-by=/etc/apt/keyrings/sury.gpg] https://packages.sury.org/php/ bookworm main" > /etc/apt/sources.list.d/sury.list
+
+# Install php-luasandbox for the Scribunto extension.
+# Debian repos don't have it for php 8.1, so we have to install it using pecl
+RUN apt-get install -y php8.1-cli php8.1-dev php8.1-common lua5.1 liblua5.1-0-dev git build-essential pkg-config autoconf && \
+    pecl install luasandbox && \
+    echo "extension=luasandbox.so" > /etc/php/8.1/mods-available/luasandbox.ini && \
+    phpenmod -v 8.1 luasandbox
 
 # Create the user-* folders or Canasta will complain
 RUN mkdir -p /var/www/mediawiki/w/user-extensions && \
     mkdir -p /var/www/mediawiki/w/user-skins
 
 # Install extra extensions
+RUN apt-get install -y unzip
 
 RUN cd /tmp && \
     wget -q https://github.com/wikimedia/mediawiki-extensions-CreatePageUw/archive/refs/heads/master.zip -O createpageuw.zip && \
